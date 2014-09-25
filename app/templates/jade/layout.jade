@@ -1,0 +1,58 @@
+- var site_url = 'https://s3.amazonaws.com/creative_loupe/website/demos/wireframing'
+- var site_name = 'Jonquil Group'
+- var layout = ''
+- var section = ''
+- var sidebar_content = ''
+
+block vars
+
+doctype html
+html.no-js(lang='en')
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{site_name} - #{page_name}
+    link(rel='icon', type='image/png', href='img/favicon.png')
+    // build:css css/app.min.css
+    link(rel="stylesheet", href="css/app.css")
+    // endbuild
+    // build:js js/vendor/modernizr.min.js
+    script(src="bower_components/modernizr/modernizr.js")
+    // endbuild
+    // build: 
+    script(src="bower_components/holderjs/holder.js")
+    // endbuild
+
+  body.antialiased.hide-extras
+    .marketing.off-canvas-wrap(data-offcanvas)
+      .inner-wrap
+        include topbar
+        block index
+        include footer
+    
+    // build:js js/vendor/libraries.min.js
+    script(src="bower_components/jquery/dist/jquery.js")
+    script(src="bower_components/fastclick/lib/fastclick.js")
+    // endbuild
+    // build:js js/vendor/foundation.min.js
+    script(src="bower_components/foundation/js/foundation/foundation.js")
+    script(src="bower_components/foundation/js/foundation/foundation.abide.js")
+    script(src="bower_components/foundation/js/foundation/foundation.accordion.js")
+    script(src="bower_components/foundation/js/foundation/foundation.alert.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.clearing.js")
+    script(src="bower_components/foundation/js/foundation/foundation.dropdown.js")
+    script(src="bower_components/foundation/js/foundation/foundation.equalizer.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.interchange.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.joyride.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.magellan.js")
+    script(src="bower_components/foundation/js/foundation/foundation.offcanvas.js")
+    script(src="bower_components/foundation/js/foundation/foundation.orbit.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.reveal.js")
+    script(src="bower_components/foundation/js/foundation/foundation.slider.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.tab.js")
+    // script(src="bower_components/foundation/js/foundation/foundation.tooltip.js")
+    script(src="bower_components/foundation/js/foundation/foundation.topbar.js")
+    // endbuild
+    // build:js js/app.min.js
+    script(src="js/app.js")
+    // endbuild
