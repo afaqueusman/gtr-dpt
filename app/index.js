@@ -102,7 +102,7 @@ var IaGenerator = yeoman.generators.Base.extend({
         }
 
         this.projectName = props.projectName;
-        this.appname = 'IA-' + this.projectName;
+        this.appname = '' + this.projectName;
         this.projectDesc = props.projectDesc;
 
         done();
