@@ -165,7 +165,7 @@ var IaGenerator = yeoman.generators.Base.extend({
       this.template('AUTHORS');
       this.template('CHANGELOG');
       this.template('LICENSE-MIT');
-      this.template('_gruntfile.js', 'Gruntfile.js');
+      this.template('_gruntfile.js', 'gruntfile.js');
       this.template('_package.json', 'package.json');
       this.template('_bower.json', 'bower.json');
       this.copy('bowerrc', '.bowerrc');
@@ -187,14 +187,15 @@ var IaGenerator = yeoman.generators.Base.extend({
       this.mkdir('app/img');
       this.mkdir('app/css');
       this.mkdir('app/scss');
+      this.mkdir('app/jade');
       this.copy('scss/app.scss', 'app/scss/app.scss');
       this.copy('scss/_settings.scss', 'app/scss/_settings.scss');
       this.copy('scss/_custom.scss', 'app/scss/_custom.scss');
       this.copy('js/app.js', 'app/js/app.js');
       this.copy('img/favicon.png', 'app/img/favicon.png')
       if (this.jade) {
-        this.template('jade/layout.jade', 'app/jade/layout.jade');
-        this.copy('index.jade', 'app/index.jade');
+        this.template('jade/partials/layout.jade', 'app/jade/partials/layout.jade');
+        this.copy('jade/index.jade', 'app/jade/index.jade')
       } else {
         this.template('index.html', 'app/index.html')
       }

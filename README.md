@@ -1,4 +1,4 @@
-# generator-dpt [![Build Status](https://secure.travis-ci.org/afaqueusman/generator-dpt.png?branch=master)](https://travis-ci.org/afaqueusman/generator-dpt)
+# generator-dpt [![Build Status](https://secure.travis-ci.org/afaqueusman/gtr-dpt.png?branch=master)](https://travis-ci.org/afaqueusman/generator-dpt)
 
 > [Yeoman](http://yeoman.io) generator
 

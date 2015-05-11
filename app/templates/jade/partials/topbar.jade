@@ -1,0 +1,25 @@
+//- Top Bar 
+.contain-to-grid.header-section
+  nav.contain-to-grid.top-bar.important-class(data-topbar, role='navigation', data-options)
+    ul.title-area
+      li.name
+        a(href='index.html')
+          img#logo(alt='DePhy tech', src='img/logo.svg')
+      li.toggle-topbar.menu-icon
+        a
+          span
+    div.top-bar-section
+      ul.right
+        li(class=(slug === 'home') ? 'active' : '')
+          a(href='index.html') home
+        li(class=(slug === 'about') ? 'active' : '')
+          a(href='about.html') about  
+        li(class=(slug === 'design') ? 'active' : '')
+          a(href='design.html') design
+        li(class=(slug === 'physical') ? 'active' : '')
+          a(href='physical.html') physical
+        li(class=(slug === 'digital') ? 'active' : '')
+          a(href='digital.html') digital
+        li(class=(slug === 'contact') ? 'active' : '')
+          a(href='contact.html') contact
+.header-fill
