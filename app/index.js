@@ -4,6 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var exec = require('child_process').exec;
 
 /* jshint -W106 */
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy ||
@@ -54,7 +55,7 @@ var githubUserInfo = function (name, cb) {
   });
 };
 
-var IaGenerator = yeoman.generators.Base.extend({
+var dpt = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
@@ -202,6 +203,31 @@ var IaGenerator = yeoman.generators.Base.extend({
     }
   }, // writing
 
+  
+  gitCommit: function () {
+    this.log('\n\nInitializing Git repository. If this fail, try running ' + chalk.yellow.bold('git init') + ' and make a first commit manually');
+    var async =  require('async');
+    async.series([
+      function (taskDone) {
+        exec('git init', taskDone);
+      },
+      function (taskDone) {
+        exec('git add . --all', taskDone);
+      },
+      function (taskDone) {
+        exec('git commit -m "Project Initiated"', taskDone);
+      }
+    ], function(err) {
+      console.log(err);
+      if (err === 127) {
+        this.log('Could not find the ' + chalk.yellow.bold('git') + ' command. Make sure Git is installed on this machine');
+        return;
+      }
+
+      this.log(chalk.green('complete') + ' Git repository has been setup');
+    }.bind(this));
+  },
+
   install: function () {
     this.on('end', function () {
       if (!this.options['skip-install']) {
@@ -211,4 +237,4 @@ var IaGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = IaGenerator;
+module.exports = dpt;
