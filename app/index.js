@@ -165,7 +165,7 @@ var dpt = yeoman.generators.Base.extend({
     projectfiles: function () {
       this.template('AUTHORS');
       this.template('CHANGELOG');
-      this.template('LICENSE-MIT');
+      this.template('LICENSE');
       this.template('_gruntfile.js', 'gruntfile.js');
       this.template('_package.json', 'package.json');
       this.template('_bower.json', 'bower.json');
