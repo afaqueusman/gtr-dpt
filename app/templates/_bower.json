@@ -4,9 +4,6 @@
   "dependencies": {
   	"foundation": "zurb/bower-foundation"<% if (fontAwesome) { %>,
     "font-awesome": "~4.1.0" <% } %>
-  },
-  "devDependencies": {
-    "holderjs": "~2.4.0"
   }
 }
 
