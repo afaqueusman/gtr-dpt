@@ -55,7 +55,7 @@ var githubUserInfo = function (name, cb) {
   });
 };
 
-var IaGenerator = yeoman.generators.Base.extend({
+var dpt = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
@@ -205,8 +205,6 @@ var IaGenerator = yeoman.generators.Base.extend({
 
   
   gitCommit: function () {
-    var done = this.async();
-
     this.log('\n\nInitializing Git repository. If this fail, try running ' + chalk.yellow.bold('git init') + ' and make a first commit manually');
     var async =  require('async');
     async.series([
@@ -227,7 +225,6 @@ var IaGenerator = yeoman.generators.Base.extend({
       }
 
       this.log(chalk.green('complete') + ' Git repository has been setup');
-      done();
     }.bind(this));
   },
 
@@ -240,4 +237,4 @@ var IaGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = IaGenerator;
+module.exports = dpt;
