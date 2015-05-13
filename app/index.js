@@ -32,15 +32,14 @@ if (process.env.GITHUB_TOKEN) {
   });
 }
 
-var extractProjectName = function (_, appname) {
-  var slugged = _.slugify(appname);
-  var match = slugged.match(/^IA-(.+)/);
+var extractProjectName = function (appname) {
+  var match = appname.match(/(.+)/);
 
   if (match && match.length === 2) {
     return match[1].toLowerCase();
   }
 
-  return slugged;
+  return appname;
 };
 
 var githubUserInfo = function (name, cb) {
@@ -83,7 +82,7 @@ var dpt = yeoman.generators.Base.extend({
 
     askForProjectName: function () {
       var done = this.async();
-      var projectName = extractProjectName(this._, this.appname);
+      var projectName = extractProjectName(this.appname);
 
       var prompts = [{
         type: 'input',
@@ -103,7 +102,7 @@ var dpt = yeoman.generators.Base.extend({
         }
 
         this.projectName = props.projectName;
-        this.appname = '' + this.projectName;
+        this.appname = _s.slugify('' + this.projectName);
         this.projectDesc = props.projectDesc;
 
         done();
@@ -163,12 +162,6 @@ var dpt = yeoman.generators.Base.extend({
 
   writing: {
     projectfiles: function () {
-      this.template('AUTHORS');
-      this.template('CHANGELOG');
-      this.template('LICENSE');
-      this.template('_gruntfile.js', 'gruntfile.js');
-      this.template('_package.json', 'package.json');
-      this.template('_bower.json', 'bower.json');
       this.copy('bowerrc', '.bowerrc');
       this.copy('jshintrc.json', '.jshintrc');
       this.copy('editorconfig', '.editorconfig');
@@ -194,11 +187,6 @@ var dpt = yeoman.generators.Base.extend({
       this.copy('scss/_custom.scss', 'app/scss/_custom.scss');
       this.copy('js/app.js', 'app/js/app.js');
       this.copy('img/favicon.png', 'app/img/favicon.png')
-      if (this.jade) {
-        this.template('jade/partials/layout.jade', 'app/jade/partials/layout.jade');
-        this.copy('jade/index.jade', 'app/jade/index.jade')
-      } else {
-        this.template('index.html', 'app/index.html')
       }
     }
   }, // writing
