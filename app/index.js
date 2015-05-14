@@ -32,14 +32,15 @@ if (process.env.GITHUB_TOKEN) {
   });
 }
 
-var extractProjectName = function (appname) {
-  var match = appname.match(/(.+)/);
+var extractProjectName = function (_, appname) {
+  var slugged = _.slugify(appname);
+  var match = slugged.match(/^IA-(.+)/);
 
   if (match && match.length === 2) {
     return match[1].toLowerCase();
   }
 
-  return appname;
+  return slugged;
 };
 
 var githubUserInfo = function (name, cb) {
@@ -82,7 +83,7 @@ var dpt = yeoman.generators.Base.extend({
 
     askForProjectName: function () {
       var done = this.async();
-      var projectName = extractProjectName(this.appname);
+      var projectName = extractProjectName(this._, this.appname);
 
       var prompts = [{
         type: 'input',
@@ -102,7 +103,7 @@ var dpt = yeoman.generators.Base.extend({
         }
 
         this.projectName = props.projectName;
-        this.appname = _s.slugify('' + this.projectName);
+        this.appname = '' + this.projectName;
         this.projectDesc = props.projectDesc;
 
         done();
@@ -162,6 +163,12 @@ var dpt = yeoman.generators.Base.extend({
 
   writing: {
     projectfiles: function () {
+      this.template('AUTHORS');
+      this.template('CHANGELOG');
+      this.template('LICENSE');
+      this.template('_gruntfile.js', 'gruntfile.js');
+      this.template('_package.json', 'package.json');
+      this.template('_bower.json', 'bower.json');
       this.copy('bowerrc', '.bowerrc');
       this.copy('jshintrc.json', '.jshintrc');
       this.copy('editorconfig', '.editorconfig');
@@ -174,20 +181,9 @@ var dpt = yeoman.generators.Base.extend({
     },
 
     app: function () {
-      this.mkdir('app');
+      this.directory('app', '');
       this.mkdir('dist');
-      this.mkdir('VAULT');
-      this.mkdir('app/js');
-      this.mkdir('app/img');
-      this.mkdir('app/css');
-      this.mkdir('app/scss');
-      this.mkdir('app/jade');
-      this.copy('scss/app.scss', 'app/scss/app.scss');
-      this.copy('scss/_settings.scss', 'app/scss/_settings.scss');
-      this.copy('scss/_custom.scss', 'app/scss/_custom.scss');
-      this.copy('js/app.js', 'app/js/app.js');
-      this.copy('img/favicon.png', 'app/img/favicon.png')
-      }
+      this.mkdir('VAULT')
     }
   }, // writing
 
