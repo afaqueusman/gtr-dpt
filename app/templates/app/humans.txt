@@ -1,0 +1,25 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Afaque Usman
+    Location: Riyadh, Saudi Arabia
+
+# THANKS
+
+    DePhy Tech (Design Physics and Technologies)
+    Site: http://dephytech.com
+
+# TECHNOLOGY COLOPHON
+
+    Standards: HTML5, CSS3, JS
+    * Grunt
+    * node-build-script
+    * Zurb Foundation 5
+    * HTML5 Boilerplate
+    * Modernizr
+    * Twitter Bower
+    * Node.js
+    * NPM
+    * Libsass

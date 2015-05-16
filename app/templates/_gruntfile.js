@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '<%%= app %>/',
+					cwd: '<%%= app %>/jade',
 					src: ['*.jade'],
 					ext: '.html',
 					dest: '<%%= app %>/'
@@ -116,6 +116,29 @@ module.exports = function(grunt) {
 			css: ['<%%= dist %>/css/**/*.css'],
 			options: {
 				dirs: ['<%%= dist %>']
+			}
+		},
+
+		htmlmin: {
+			dist: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true,
+					collapseBooleanAttributes: true,
+					conservativeCollapse: true,
+					removeAttributesQuotes: true,
+					removeCommentsFromCDATA: true,
+					removeEmptyAttributes: true,
+					removeOptionalTags: true,
+					removeRedundantAttributes: false,
+					useShortDoctype: true
+				},
+				files: [{
+					expand: true,
+					cwd: 'dist/',
+					src: '**/*.html',
+					dest: 'dist/'
+				}]
 			}
 		},
 

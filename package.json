@@ -1,13 +1,13 @@
 {
   "name": "generator-dpt",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
-  "license": "MIT",
+  "version": "0.1.0",
+  "description": "Scaffold out a Responsive front end for static websites - Design Physics and Technologies",
+  "license": "BSD",
   "main": "app/index.js",
-  "repository": "afaqueusman/generator-dpt",
+  "repository": "afaqueusman/gtr-dpt",
   "author": {
-    "name": "",
-    "email": "",
+    "name": "Design Physics and Technologies",
+    "email": "info@dephytech.com, dephytech@gmail.com",
     "url": "https://github.com/afaqueusman"
   },
   "engines": {
@@ -19,20 +19,17 @@
   "files": [
     "app"
   ],
-  "keywords": [
-    "yeoman-generator"
-  ],
   "dependencies": {
-    "chalk": "^0.5.0",
-    "github": "^0.2.2",
-    "yeoman-generator": "^0.17.0",
-    "yosay": "^0.3.0"
+    "async": "^0.9.0",
+    "chalk": "^1.0.0",
+    "github": "^0.2.4",
+    "lodash": "^3.6.0",
+    "underscore.string": "^3.0.3",
+    "yeoman-generator": "^0.19.2",
+    "yosay": "^1.0.3"
   },
   "devDependencies": {
     "mocha": "*",
     "mockery": "^1.4.0"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }
