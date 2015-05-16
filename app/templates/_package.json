@@ -1,10 +1,10 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= appname %>",
   "version": "0.1.0",
-  "description": "<%= _.capitalize(projectDesc) %>.",
+  "description": "<%= projectDesc %>.",
   "license": "BSD",
   "homepage": "http://www.dephytech.com",
-  "repository": "<%= githubUser %>/<%= _.slugify(appname) %>",
+  "repository": "<%= githubUser %>/<%= appname %>",
   "author": {
     "name": "<%= realname %>",
     "email": "<%= email %>",
